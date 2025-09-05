@@ -77,7 +77,7 @@ def marcar_como_adotado(pets):
     else:
         print("ID inválido.")
 
-# Função para remover um pet do sistema
+# Função para remover um pet do sistema  
 def remover_pet(pets):
     id_pet = int(input("Digite o ID do pet para remover: "))
 
