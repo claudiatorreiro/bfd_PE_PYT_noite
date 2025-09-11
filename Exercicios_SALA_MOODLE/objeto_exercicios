@@ -128,88 +128,75 @@
 
 # # Tentando saque de R$50
 # if conta.sacar(50):
-#     print("✅ Saque de R$50 realizado com sucesso!")
+#     print("Saque de R$50 realizado com sucesso!")
 # else:
-#     print("❌ Falha no saque de R$50.")
+#     print("Falha no saque de R$50.")
 
 # # Tentando saque de R$300 (vai falhar)
 # if conta.sacar(300):
-#     print("✅ Saque de R$300 realizado com sucesso!")
+#     print("Saque de R$300 realizado com sucesso!")
 # else:
-#     print("❌ Falha no saque de R$300 (saldo insuficiente).")
+#     print("Falha no saque de R$300 (saldo insuficiente).")
 
 # # Mostrando extrato
 #     conta.extrato()
 
-# class Aluno:
-#     def __init__(self, nome: str, nota: float):
-#         self.nome = nome
-#         self.nota = nota
+class Aluno:
+    def __init__(self, nome: str, nota: float):
+        self.nome = nome
+        self.nota = nota
 
-#     def __str__(self):
-#        return f"Aluno: {self.nome} - Nota: {self.nota}"
-    
-# # Criando objetos
-# aluno1 = Aluno("Maria", 9.5)
-# aluno2 = Aluno("João", 8.0)
+    # def __str__(self):
+    #     return f"Aluno: {self.nome} - Nota: {self.nota}"
 
-# # Imprimindo objetos
-# print(aluno1)
-# print(aluno2)
+class Turma:
+    def __init__(self):
+        self.alunos = []
+
+    def adicionar_aluno(self, aluno: Aluno):
+        self.alunos.append(aluno)
+        # print(f"Aluno {aluno.nome} adicionado com nota {aluno.nota}")
+
+    def listar_alunos(self):
+        print("\nLista de Alunos na Turma:")
+        for aluno in self.alunos:
+            print(f"{aluno.nome} - Nota: {aluno.nota}")
+
+# Criando alunos
+aluno1 = Aluno("Ana", 9.5)
+aluno2 = Aluno("Bruno", 7.0)
+aluno3 = Aluno("Carla", 8.3)
+
+# Criando turma e adicionando alunos
+turma = Turma()
+turma.adicionar_aluno(aluno1)
+turma.adicionar_aluno(aluno2)
+turma.adicionar_aluno(aluno3)
+
+# Listando os alunos
+turma.listar_alunos()
 
 
-# class Turma:
-#     def __init__(self):
-#         self.alunos = []  # Lista vazia para começar
+# class Cachorro:
+#     especie = "Canis familiaris"  # Atributo de classe (igual para todos)
 
-#     def adicionar_aluno(self, aluno: Aluno):
-#         self.alunos.append(aluno)
-#         print(f"✅ Aluno {aluno.nome} adicionado com nota {aluno.nota}")
+#     def __init__(self, nome: str, idade: int):
+#         self.nome = nome          # Atributo de instância (individual)
+#         self.idade = idade
 
-#     def add_aluno(self, alunos: str):
-#         self.add_aluno += Turma
-#         print(f"O aluno {self.nome} foi adicionado a {self.turma}")
+# # Criando dois cachorros
+# dog1 = Cachorro("Rex", 5)
+# dog2 = Cachorro("Luna", 3)
 
-# # Criando alunos
-# aluno1 = Aluno("Ana", 9.5)
-# aluno2 = Aluno("Bruno", 7.0)
-# aluno3 = Aluno("Carla", 8.3)
+# # Acessando atributos
+# print(f"{dog1.nome} tem {dog1.idade} anos.")
+# print(f"{dog2.nome} tem {dog2.idade} anos.")
 
-# # Criando turma
-# turma = Turma()
+# # Acessando o atributo de classe pela CLASSE
+# print("Espécie (pela classe):", Cachorro.especie)
 
-# # Adicionando alunos na turma
-# turma.adicionar_aluno(aluno1)
-# turma.adicionar_aluno(aluno2)
-# turma.adicionar_aluno(aluno3)
-
-# def listar_alunos(self):
-#         print("\n📋 Lista de Alunos na Turma:")
-#         for aluno in self.alunos:
-#             print(f"🧑 {aluno.nome} - Nota: {aluno.nota}")
-
-#             turma.listar_alunos()
-
-class Cachorro:
-    especie = "Canis familiaris"  # 🧬 Atributo de classe (igual para todos)
-
-    def __init__(self, nome: str, idade: int):
-        self.nome = nome          # 🐾 Atributo de instância (individual)
-        self.idade = idade
-
-# Criando dois cachorros
-dog1 = Cachorro("Rex", 5)
-dog2 = Cachorro("Luna", 3)
-
-# Acessando atributos
-print(f"{dog1.nome} tem {dog1.idade} anos.")
-print(f"{dog2.nome} tem {dog2.idade} anos.")
-
-# Acessando o atributo de classe pela CLASSE
-print("Espécie (pela classe):", Cachorro.especie)
-
-# Acessando o atributo de classe pelo OBJETO
-print("Espécie (pelo objeto):", dog1.especie)
+# # Acessando o atributo de classe pelo OBJETO
+# print("Espécie (pelo objeto):", dog1.especie)
 
 
 
