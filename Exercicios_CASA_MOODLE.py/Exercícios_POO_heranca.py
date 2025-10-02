@@ -7,7 +7,7 @@ class Usuario:
         self.nome = nome
         self.email = email
 
-class Cliente(Usuario):
+class Cliente(Usuario): 
     pass
 
 # Criando um cliente
