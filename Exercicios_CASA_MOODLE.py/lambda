@@ -1,0 +1,33 @@
+# 1) Dobro dos números (map + lambda)
+nums = [1, 2, 3, 4, 5]
+dobro = list(map(lambda x: x * 2, nums))
+
+
+# 2) Filtrar pares (filter + lambda)
+vals = [10, 15, 20, 25, 30]
+pares = list(filter(lambda x: x % 2 == 0, vals))
+
+
+# 3) Soma dos números (reduce + lambda)
+nums2 = [1, 2, 3, 4, 5]
+soma = reduce(lambda a, b: a + b, nums2)
+
+
+# 4) Ordenação por comprimento da palavra (sorted + lambda)
+palavras = ["uva", "banana", "maçã", "laranja"]
+ordenadas_por_tam = sorted(palavras, key=lambda s: len(s))
+
+
+# 5) Primeira letra maiúscula (map + lambda)
+nomes = ["ana", "pedro", "maria"]
+capitalizados = list(map(lambda s: s.capitalize(), nomes))
+
+
+# 6) Produto dos números (reduce + lambda)
+nums3 = [2, 3, 4, 5]
+produto = reduce(lambda a, b: a * b, nums3)
+
+
+# 7) Ordenar por último caractere (sorted + lambda)
+frutas = ["banana", "uva", "maçã", "laranja"]
+ordenadas_ultimo = sorted(frutas, key=lambda s: s[-1])
