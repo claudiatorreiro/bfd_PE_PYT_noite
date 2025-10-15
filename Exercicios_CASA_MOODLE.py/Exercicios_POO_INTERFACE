@@ -1,0 +1,95 @@
+from abc import ABC, abstractmethod
+
+print("\n==== 1. Interface Pagamento ====")
+
+class Pagamento(ABC):
+    @abstractmethod
+    def processar(self, valor):
+        pass
+
+class CartaoCredito(Pagamento):
+    def processar(self, valor):
+        print(f"Processando pagamento de R${valor:.2f} no cartão de crédito.")
+
+class Boleto(Pagamento):
+    def processar(self, valor):
+        print(f"Gerando boleto no valor de R${valor:.2f}.")
+
+cartao = CartaoCredito()
+boleto = Boleto()
+
+cartao.processar(150.75)
+boleto.processar(89.99)
+
+
+print("\n==== 2. Interface múltipla: Ligavel + Desligavel ====")
+
+class Ligavel(ABC):
+    @abstractmethod
+    def ligar(self):
+        pass
+
+class Desligavel(ABC):
+    @abstractmethod
+    def desligar(self):
+        pass
+
+class Computador(Ligavel, Desligavel):
+    def ligar(self):
+        print("Computador ligado.")
+
+    def desligar(self):
+        print("Computador desligado.")
+
+pc = Computador()
+pc.ligar()
+pc.desligar()
+
+
+print("\n==== 3. Interface com herança múltipla: Imprimivel + Exportavel ====")
+
+class Imprimivel(ABC):
+    @abstractmethod
+    def imprimir(self):
+        pass
+
+class Exportavel(ABC):
+    @abstractmethod
+    def exportar(self):
+        pass
+
+class Relatorio(Imprimivel, Exportavel):
+    def imprimir(self):
+        print("Imprimindo relatório...")
+
+    def exportar(self):
+        print("Exportando relatório em PDF...")
+
+rel = Relatorio()
+rel.imprimir()
+rel.exportar()
+
+
+print("\n==== 4. Forçando contrato com Repositorio ====")
+
+class Repositorio(ABC):
+    @abstractmethod
+    def salvar(self, objeto):
+        pass
+
+    @abstractmethod
+    def buscar(self, id):
+        pass
+
+# Classe corrigida que implementa todos os métodos
+class RepositorioMemoria(Repositorio):
+    def salvar(self, objeto):
+        print(f"Salvando: {objeto}")
+
+    def buscar(self, id):
+        print(f"Buscando objeto com ID: {id}")
+        return {"id": id, "nome": "Exemplo"}
+
+repo = RepositorioMemoria()
+repo.salvar({"nome": "Teste"})
+print(repo.buscar(1))
