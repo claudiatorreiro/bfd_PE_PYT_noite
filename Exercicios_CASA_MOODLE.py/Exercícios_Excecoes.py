@@ -1,162 +1,108 @@
-# Exercício 1:
-# Escreva um programa que peça ao usuário para digitar um número.
-# Trate o erro caso ele digite algo que não seja um número inteiro.
+# 1. Solicitar um número inteiro com tratamento de erro
+try:
+    numero = int(input("Digite um número inteiro: "))
+    print(f"Você digitou: {numero}")
+except ValueError:
+    print("Erro: Isso não é um número inteiro.")
 
-# try:
-#     numero = int(input("Digite um número inteiro: "))
-#     print("Você digitou:", numero)
+# 2. Multiplicação com verificação de entrada inválida
+try:
+    a = float(input("Digite o primeiro número: "))
+    b = float(input("Digite o segundo número: "))
+    resultado = a * b
+    print(f"Resultado: {resultado}")
+except ValueError:
+    print("Erro: Entrada inválida. Digite apenas números.")
 
-# except ValueError:
-#     print("Erro! Você não digitou um número inteiro.")
+# 3. Conversão com else após sucesso
+try:
+    numero = int(input("Digite um número inteiro: "))
+except ValueError:
+    print("Erro: Isso não é um número válido.")
+else:
+    print(f"Conversão bem-sucedida. Você digitou {numero}.")
 
+# 4. Abertura de arquivo com try e finally
+try:
+    arquivo = open("dados.txt", "r")
+    conteudo = arquivo.read()
+    print(conteudo)
+except FileNotFoundError:
+    print("Arquivo 'dados.txt' não encontrado.")
+finally:
+    print("Encerrando programa.")
 
-# Exercício 2 – Enunciado
-# Peça ao usuário dois números e tente multiplicá-los.
-# Se o usuário digitar algo inválido, exiba uma mensagem de erro.
+# 5. Função dividir(a, b) com raise ZeroDivisionError
+def dividir(a, b):
+    if b == 0:
+        raise ZeroDivisionError("Não é possível dividir por zero.")
+    return a / b
 
-# try:
-#     num1 = float(input("Digite o primeiro número: "))
-#     num2 = float(input("Digite o segundo número: "))
-#     resultado = num1 * num2
+# Exemplo de uso
+try:
+    print(dividir(10, 2))
+    print(dividir(10, 0))
+except ZeroDivisionError as e:
+    print(f"Erro: {e}")
 
-#     print(f"Resultado da multiplicação: {resultado}")
+# 6. Exceção personalizada IdadeInvalidaError
+class IdadeInvalidaError(Exception):
+    pass
 
-# except ValueError:
-#     print("Erro! Você precisa digitar apenas números.")
+def cadastrar_idade(idade):
+    if idade < 0:
+        raise IdadeInvalidaError("Idade não pode ser negativa.")
+    print(f"Idade cadastrada: {idade}")
 
-# Exercício 3 
-# Crie um programa que peça ao usuário um número inteiro.
-# Se a conversão for bem-sucedida, mostre uma mensagem usando o bloco else.
+# Exemplo de uso
+try:
+    idade = int(input("Digite sua idade: "))
+    cadastrar_idade(idade)
+except IdadeInvalidaError as e:
+    print(f"Erro: {e}")
+except ValueError:
+    print("Erro: Digite um número inteiro válido.")
 
-# try:
-#     numero = int(input("Digite um número inteiro: "))
+# 7. Divisão com tratamento de dois tipos de erro
+try:
+    num1 = float(input("Digite o numerador: "))
+    num2 = float(input("Digite o denominador: "))
+    resultado = num1 / num2
+    print(f"Resultado da divisão: {resultado}")
+except ValueError:
+    print("Erro: Entrada inválida. Digite apenas números.")
+except ZeroDivisionError:
+    print("Erro: Divisão por zero não é permitida.")
 
-# except ValueError:
-#     print("Erro! Você não digitou um número inteiro.")
+# 8. Verificar se número é par com try, else e finally
+try:
+    numero = int(input("Digite um número inteiro: "))
+except ValueError:
+    print("Erro: Isso não é um número inteiro.")
+else:
+    if numero % 2 == 0:
+        print("O número é par.")
+    else:
+        print("O número é ímpar.")
+finally:
+    print("Fim do programa.")
 
-# else:
-#     print(f"Parabéns! Você digitou o número {numero}")
-
-# Exercício 4 
-# Implemente um programa que abra um arquivo chamado dados.txt (não precisa existir).
-# Use try e finally para garantir que uma mensagem de "Encerrando programa" seja sempre exibida.
-
-# try:
-#     arquivo = open("dados.txt", "r")  # Tenta abrir o arquivo no modo leitura
-#     conteudo = arquivo.read()
-#     print("Arquivo aberto com sucesso!")
-#     print(conteudo)
-
-# except FileNotFoundError:
-#     print("Erro: O arquivo 'dados.txt' não foi encontrado.")
-
-# finally:
-#     print("Encerrando programa...")
-
-# Exercício 5 
-# Crie uma função dividir(a, b) que lance (raise) uma exceção ZeroDivisionError se b for igual a zero.
-# Caso contrário, retorne o resultado da divisão normalmente.
-
-# def dividir(a, b):
-#     if b == 0:
-#         raise ZeroDivisionError("Você tentou dividir por zero.")
-#     return a / b
-
-# try:
-#     resultado = dividir(10, 2)
-#     print("Resultado:", resultado)
-
-# except ZeroDivisionError as erro:
-#     print("Erro ao dividir:", erro)
-
-# Exercício 6
-# Crie uma exceção personalizada chamada IdadeInvalidaError.
-# Depois, crie uma função cadastrar_idade(idade) que lança essa exceção caso a idade seja negativa.
-
-# class IdadeInvalidaError(Exception):
-#     pass
-
-# def cadastrar_idade(idade):
-#     if idade < 0:
-#         raise IdadeInvalidaError("Idade não pode ser negativa!")
-#     print(f"Idade {idade} cadastrada com sucesso.")
-
-# try:
-#     idade = int(input("Digite sua idade: "))
-#     cadastrar_idade(idade)
-
-# except IdadeInvalidaError as erro:
-#     print("Erro:", erro)
-
-# except ValueError:
-#     print("Erro: Você precisa digitar um número inteiro.")
-
-# Exercício 7 
-# Peça ao usuário dois números e divida o primeiro pelo segundo.
-# Trate dois tipos de erro:
-# ValueError se o usuário digitar algo inválido (ex: letras).
-# ZeroDivisionError se tentar dividir por zero.
-
-# try:
-#     num1 = float(input("Digite o primeiro número: "))
-#     num2 = float(input("Digite o segundo número: "))
-#     resultado = num1 / num2
-
-# except ValueError:
-#     print("Erro: Você precisa digitar apenas números.")
-
-# except ZeroDivisionError:
-#     print("Erro: Não é possível dividir por zero.")
-    
-# else:
-#     print(f"Resultado da divisão: {resultado}")
-
-# Exercício 8 
-# Crie um programa que peça ao usuário um número inteiro e verifique se ele é par.
-# Use:
-# try para tentar converter a entrada
-# else para verificar se é par ou ímpar
-# finally para exibir "Fim do programa"
-
-# try:
-#     numero = int(input("Digite um número inteiro: "))
-
-# except ValueError:
-#     print("Erro: Você não digitou um número inteiro.")
-
-# else:
-#     if numero % 2 == 0:
-#         print(f"O número {numero} é par.")
-#     else:
-#         print(f"O número {numero} é ímpar.")
-
-# finally:
-#     print("Fim do programa.")
-
-
-# Exercício 9 
-# Crie uma função sacar(saldo, valor) que:
-# Lance uma exceção personalizada chamada SaldoInsuficienteError se o valor for maior que o saldo.
-# Caso contrário, retorne o novo saldo.
-# Teste a função dentro de um bloco try-except e exiba uma mensagem apropriada ao usuário.
-
+# 9. Função sacar() com exceção personalizada SaldoInsuficienteError
 class SaldoInsuficienteError(Exception):
     pass
 
 def sacar(saldo, valor):
     if valor > saldo:
-        raise SaldoInsuficienteError("Saldo insuficiente para o saque.")
+        raise SaldoInsuficienteError("Saldo insuficiente para realizar o saque.")
     return saldo - valor
 
+# Exemplo de uso
 try:
-    saldo = float(input("Digite seu saldo atual: "))
-    valor_saque = float(input("Digite o valor que deseja sacar: "))
-    
-    novo_saldo = sacar(saldo, valor_saque)
-    print(f"Saque realizado com sucesso! Novo saldo: R$ {novo_saldo:.2f}")
-
-except SaldoInsuficienteError as erro:
-    print("Erro:", erro)
-    
+    saldo_atual = 500
+    valor_saque = float(input("Digite o valor do saque: "))
+    novo_saldo = sacar(saldo_atual, valor_saque)
+    print(f"Saque realizado com sucesso. Novo saldo: {novo_saldo}")
+except SaldoInsuficienteError as e:
+    print(f"Erro: {e}")
 except ValueError:
-    print("Erro: Digite apenas números válidos.")
+    print("Erro: Digite um valor numérico válido.")
