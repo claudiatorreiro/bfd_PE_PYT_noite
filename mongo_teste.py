@@ -2,7 +2,7 @@ import pymongo
 from urllib.parse import quote_plus
 
 usuario = quote_plus("ctporneiro_db_user")
-senha = quote_plus("%40iPB87B11603")  # '@' precisa ser codificado
+senha = quote_plus("senha")  # '@' precisa ser codificado
 cluster = "conexaomongodb.n0tsteg.mongodb.net"
 banco = "conexaomongodb"
 

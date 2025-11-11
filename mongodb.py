@@ -2,8 +2,7 @@ import pymongo
 
 # URI completa com usuário, senha (codificada) e host correto
 uri = (
-    "mongodb+srv://cgtorreiro_db_user:%40iPB87116053"
-    "@conexaomongodb.n0tsteg.mongodb.net/"
+    "mongodb+srv://cgtorreiro_db_user:senha@conexaomongodb.n0tsteg.mongodb.net/"
     "?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true&appName=conexaomongodb"
 )
 
